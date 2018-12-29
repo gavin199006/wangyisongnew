@@ -259,7 +259,7 @@ def songnamedown():
 		for i in songname_c:
 			print(i)
 			result = list(d.search_song(i))
-			print((result))
+			# print((result))
 			data = down.get_data(result)
 
 			# save2csv(data)
@@ -273,11 +273,11 @@ def songnamedown():
 
 				down.lyrics_download(songname,lyric_path,songid)
 			with open(song_down_path,'a') as f:
-				f.write(i + '\n')
+				f.write('\n' + i)
 
 ########根据歌手id下载
 def singerdown():
-	lyric_path = '/zhangkun/PycharmProjects/wangyisong/lyrics/4721'
+	lyric_path = '/zhangkun/PycharmProjects/wangyisong/lyrics'
 	singer_so = singer_songs()
 
 	down = download()
@@ -285,7 +285,6 @@ def singerdown():
 	singer_id = '4721'####歌手的id在热门歌手信息new.csv中查看
 	result = list(singer_so.get_top50(singer_id))
 	data = down.get_data(result)
-	print(data)
 	if data:
 		for alone_song in data:
 			songid = alone_song.get('歌曲ID')
@@ -296,6 +295,6 @@ def singerdown():
 
 if __name__ == '__main__':
 
-	# songnamedown()
+	songnamedown()
 
-	singerdown()
+	# singerdown()
